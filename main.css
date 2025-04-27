@@ -48,6 +48,11 @@ body{
   flex-direction: column;
   cursor: pointer;
 }
+
+.team__item:hover .team__item-image img{
+  transform: scale(1);
+
+}
 .team__item-image {
   position: relative;
   min-height: 37.5rem;
@@ -61,10 +66,7 @@ body{
   }
 }
 
-.team__item-image:hover img{
-  transform: scale(1);
 
-}
 
 
 
