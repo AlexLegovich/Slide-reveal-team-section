@@ -33,10 +33,36 @@ const teamData = [
 
 
 
-// Variables
 
-const slider = $('#sidebar')
 
+
+
+// add overlay to DOM
+
+const overlay = document.createElement('div')
+overlay.classList.add('main-overlay')
+document.body.appendChild(overlay)
+
+// Create sidebar
+
+const sidebar = document.createElement('div')
+sidebar.classList.add('sidebar')
+document.body.appendChild(sidebar)
+
+
+sidebar.innerHTML = `<div class="close-sidebar">
+      </div>
+      <div class="sidebar__image">
+        <img src="" alt="Image" />
+      </div>
+      <h4 class="sidebar__title">Title</h4>
+      <p class="sidebar__position">position</p>
+      <div class="sidebar__text">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio
+        voluptatum quas cum placeat reprehenderit at distinctio saepe, numquam
+        culpa reiciendis beatae? Quisquam adipisci autem ipsum fuga nisi minus
+        id quibusdam.
+      </div>`
 
 
 // Scrollbar width
@@ -44,12 +70,6 @@ const slider = $('#sidebar')
 function getScrollbarWidth() {
   return window.innerWidth - document.documentElement.clientWidth
 }
-
-// add overlay to DOM
-
-const overlay = document.createElement('div')
-overlay.classList.add('main-overlay')
-document.body.appendChild(overlay)
 
 // Body lock and unlock
 
@@ -67,17 +87,19 @@ function unlockBody() {
 }
 
 
-// Slide reveal main
 
-let sliderWidth = window.innerWidth <= 992 ? '100%' : 700
-slider.slideReveal({
+
+
+
+let sidebarWidth = window.innerWidth <= 992 ? '100%' : 700
+$(sidebar).slideReveal({
   trigger: $('.team__item'),
   position: 'right',
   push: false,
   overlay: true,
   position: 'right',
   overlayColor: 'rgba(0,0,0,0)',
-  width: sliderWidth,
+  width: sidebarWidth,
 
   show: function () {
     lockBody();
@@ -92,7 +114,7 @@ slider.slideReveal({
 })
 
 $('.close-sidebar').on('click', function () {
-  slider.slideReveal('hide')
+  $(sidebar).slideReveal('hide')
 })
 
 
