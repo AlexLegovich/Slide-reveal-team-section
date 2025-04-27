@@ -14,24 +14,25 @@ body {
 
   /* Overlay style */
 
-  --overlayBG: rgba(3, 2, 14, 0.9);
-  --overlayBlur: blur(0px);
+  --overlayBG: rgba(3, 2, 14, 0.6);
+  --overlayBlur:7px;
   --zIndex: 100;
 
   /* Sidebar styles */
-  --sidebarBg: #11093a;
-  --sidebarPadding: 64px 54px;
+  --sidebarBg: #e9e9e9;
+  --sidebarPadding: 64px 24px;
   --sidebarPaddingMobile:72px 16px;
+  --sidebarRadius: 30px 0px 0px 30px ;
 
   /* Close sidebar button */
 
-  --left: 54px;
+  --left: 24px;
   --top: 16px;
   --leftMobile:16px;
   --topMobile:16px;
   --closeWidth: 32px;
   --closeHeight: 32px;
-  --crossColor: #ffffff;
+  --crossColor: #110303;
   --lineHeight: 2px;
   --hoverColor: #616483;
   --rotateAngle: 180deg;
@@ -41,7 +42,7 @@ body {
   --imageHeightMobile: 400px;
   --ImageMarginBottom: 12px;
   --imageWidth: 100%;
-  --imageRadius:16px;
+  --imageRadius:4px;
   --imagePosition: top;
 
   /* Sidebar texts */
@@ -53,20 +54,20 @@ body {
   --sizeMobileTitle: 24px;
   --titleMarginBottom: 4px;
   --lineHeightTitle: 120%;
-  --colorTitle: #ffffff;
+  --colorTitle: #1d1b1b;
 
   /* Position */
   --sizePosition: 20px;
   --sizeMobilePosition: 16px;
   --positionMarginBottom: 24px;
   --lineHeightPosition: 120%;
-  --colorPosition: #ffffff;
+  --colorPosition: #000000;
 
   /* Text */
   --sizeText: 16px;
   --sizeMobileText: 14px;
   --lineHeightText: 145%;
-  --colorText: #e4e4e4;
+  --colorText: #0c0b0b;
 }
 
 .team {
@@ -154,6 +155,8 @@ body {
   padding: var(--sidebarPadding);
   overflow: auto;
   transition: var(--transition) !important;
+  border-radius: var(--sidebarRadius);
+  
 }
 
 @media (max-width: 640px) {
@@ -279,7 +282,7 @@ body {
   height: 100%;
   background-color: var(--overlayBG);
   z-index: var(--zIndex);
-  backdrop-filter: var(--overlayBlur);
+  backdrop-filter: blur(var(--overlayBlur));
   opacity: 0;
   pointer-events: none;
   transition: var(--transition);
