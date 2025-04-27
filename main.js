@@ -17,16 +17,26 @@ const teamData = [
     bio: 'Hélène was born and raised in Belgium where she graduated as a bio engineer specializing in Agronomy. To pursue her passion for wine she has worked in countries such as Italy, France, and Croatia to research sustainability practices in the wine sector and to gain practical experience. Her additional Master’s in International Food and Beverage management at the business school of ESCP in Turin and Paris and her previous experience as business manager gave her in-depth knowledge of the commercial aspects of the wine market. Hélène has completed her WSET diploma.'
   },
   {
-    name: 'Lecia Long',
+    name: 'Maria Giulia Alicino',
     bio: ''
-  }
+  },
+  {
+    name: 'Amber Baker',
+    bio: ''
+  },
+  {
+    name: 'Helen Day',
+    bio: ''
+  },
 ];
+
+
 
 
 // Variables
 
-const slider = $('#slider')
-const overlay = $('.main-overlay')
+const slider = $('#sidebar')
+
 
 
 // Scrollbar width
@@ -35,6 +45,11 @@ function getScrollbarWidth() {
   return window.innerWidth - document.documentElement.clientWidth
 }
 
+// add overlay to DOM
+
+const overlay = document.createElement('div')
+overlay.classList.add('main-overlay')
+document.body.appendChild(overlay)
 
 // Body lock and unlock
 
@@ -52,31 +67,32 @@ function unlockBody() {
 }
 
 
-
-
+// Slide reveal main
 
 let sliderWidth = window.innerWidth <= 992 ? '100%' : 700
 slider.slideReveal({
-  trigger: $('.team__item-image'),
+  trigger: $('.team__item'),
   position: 'right',
   push: false,
   overlay: true,
   position: 'right',
   overlayColor: 'rgba(0,0,0,0)',
   width: sliderWidth,
-  speed: 600,
+  speed: 400,
 
   show: function () {
-    lockBody()
-    overlay.addClass('active')
+    lockBody();
+    overlay.classList.add('active')
+
   },
   hide: function () {
-    unlockBody()
-    overlay.removeClass('active')
+    unlockBody();
+    overlay.classList.remove('active')
+
   },
 })
 
-$('.close-reveal').on('click', function () {
+$('.close-sidebar').on('click', function () {
   slider.slideReveal('hide')
 })
 
@@ -87,23 +103,25 @@ $('.close-reveal').on('click', function () {
 
 
 
+let missingMessage = 'No biography at the moment. We are very sorry'
+
 // Data changes
 
-const teamImages = document.querySelectorAll('.team__item-image img');
-const revealImage = document.querySelector('.reveal__image img');
+const teamItems = document.querySelectorAll('.team__item');
+const revealImage = document.querySelector('.sidebar__image img');
 
-const revealTitle = document.querySelector('.reveal__title');
-const revealPosition = document.querySelector('.reveal__position');
-const revealText = document.querySelector('.reveal__text');
+const revealTitle = document.querySelector('.sidebar__title');
+const revealPosition = document.querySelector('.sidebar__position');
+const revealText = document.querySelector('.sidebar__text');
 
-teamImages.forEach((image) => {
-  image.addEventListener('click', () => {
+teamItems.forEach((item) => {
+  item.addEventListener('click', () => {
 
+    const image = item.querySelector('.team__item-image img');
     revealImage.src = image.src;
 
-    const teamItem = image.closest('.team__item');
-    const name = teamItem.querySelector('.team__item-name');
-    const position = teamItem.querySelector('.team__item-position');
+    const name = item.querySelector('.team__item-name');
+    const position = item.querySelector('.team__item-position');
 
     const nameText = name.textContent.trim(); 
     const positionText = position.textContent.trim();
@@ -113,9 +131,10 @@ teamImages.forEach((image) => {
 
     const memberData = teamData.find(person => person.name === nameText); 
     if (memberData) {
-      revealText.textContent = memberData.bio
+      revealText.textContent = memberData.bio;
     } else {
-      revealText.textContent = 'No biography available.'
+      revealText.textContent = missingMessage;
     }
   });
-})
+});
+
