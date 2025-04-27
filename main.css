@@ -99,6 +99,7 @@ body{
   background-color: #fff;
   padding: 6.25rem 4.5rem;
   overflow: auto;
+  transition:  .7s cubic-bezier(0.22, 1, 0.36, 1)!important;
 }
 
 @media (max-width: 992px){
@@ -178,7 +179,7 @@ body{
   backdrop-filter: blur(6px);
   opacity: 0;
   pointer-events: none;
-  transition: all ease 400ms;
+  transition:  all .7s cubic-bezier(0.22, 1, 0.36, 1)
   
 
 

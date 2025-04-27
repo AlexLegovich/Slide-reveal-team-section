@@ -78,7 +78,6 @@ slider.slideReveal({
   position: 'right',
   overlayColor: 'rgba(0,0,0,0)',
   width: sliderWidth,
-  speed: 400,
 
   show: function () {
     lockBody();
