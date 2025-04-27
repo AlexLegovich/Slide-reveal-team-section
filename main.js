@@ -61,7 +61,7 @@ sidebar.innerHTML = `<div class="close-sidebar">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio
         voluptatum quas cum placeat reprehenderit at distinctio saepe, numquam
         culpa reiciendis beatae? Quisquam adipisci autem ipsum fuga nisi minus
-        id quibusdam.
+        id quibusdafm.
       </div>`
 
 
