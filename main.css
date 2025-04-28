@@ -14,15 +14,15 @@ body {
 
   /* Overlay style */
 
-  --overlayBG: rgba(3, 2, 14, 0.6);
-  --overlayBlur:7px;
+  --overlayBG: rgba(3, 2, 14, 0.8);
+  --overlayBlur:6px;
   --zIndex: 100;
 
   /* Sidebar styles */
   --sidebarBg: #e9e9e9;
   --sidebarPadding: 64px 24px;
   --sidebarPaddingMobile:72px 16px;
-  --sidebarRadius: 30px 0px 0px 30px ;
+  --sidebarRadius:  0px ;
 
   /* Close sidebar button */
 
@@ -54,20 +54,23 @@ body {
   --sizeMobileTitle: 24px;
   --titleMarginBottom: 4px;
   --lineHeightTitle: 120%;
-  --colorTitle: #1d1b1b;
+  --colorTitle: #0c0b0b;
+  --fontWeightTitle:400;
 
   /* Position */
   --sizePosition: 20px;
   --sizeMobilePosition: 16px;
   --positionMarginBottom: 24px;
   --lineHeightPosition: 120%;
-  --colorPosition: #000000;
+  --colorPosition: #0c0b0b;
+  --fontWeightPosition:400;
 
   /* Text */
   --sizeText: 16px;
   --sizeMobileText: 14px;
   --lineHeightText: 145%;
   --colorText: #0c0b0b;
+  --fontWeightText:400;
 }
 
 .team {
@@ -242,6 +245,7 @@ body {
   font-size: var(--sizeTitle);
   font-family: var(--fontSecondary);
   line-height: var(--lineHeightTitle);
+  font-weight: var(--fontWeightTitle);
   margin-bottom: var(--titleMarginBottom);
   color: var(--colorTitle);
 }
@@ -255,6 +259,7 @@ body {
   font-size: var(--sizePosition);
   margin-bottom: var(--positionMarginBottom);
   line-height: var(--lineHeightPosition);
+  font-weight: var(--fontWeightPosition);
   color: var(--colorPosition);
 
 }
@@ -267,6 +272,7 @@ body {
 .sidebar__text {
   font-size: var(--sizeText);
   line-height: var(--lineHeightText);
+  font-weight: var(--fontWeightText);
   color: var(--colorText);
 }
 @media (max-width: 640px) {

@@ -15,29 +15,17 @@ const teamData = [
   {
     name: 'Hélène Temmerman',
     text: 'Hélène was born and raised in Belgium where she graduated as a bio engineer specializing in Agronomy. To pursue her passion for wine she has worked in countries such as Italy, France, and Croatia to research sustainability practices in the wine sector and to gain practical experience. Her additional Master’s in International Food and Beverage management at the business school of ESCP in Turin and Paris and her previous experience as business manager gave her in-depth knowledge of the commercial aspects of the wine market. Hélène has completed her WSET diploma.'
-  },
-  {
-    name: 'Maria Giulia Alicino',
-    text: 'Emily has over a decade of experience in marketing and brand development within agencies, as a consultant and in-house. She has previously planned and executed the marketing strategy for a new global skin clinic, curated art galleries and worked as an art dealer internationally, and has consulted on marketing and culture for brands such as MTV, Post Office, Casio and Kit Heath. Emily enjoys photography and has shot with brands such as DeBeers, Lofbergs and Charity Bank. She is training for her WSET and, when not working, enjoys walks with her miniature dachshund, Mayer (a nod to legendary guitarist, John).'
-  },
-  {
-    name: 'Amber Baker',
-    text: 'Emily has over a decade of experience in marketing and brand development within agencies, as a consultant and in-house. She has previously planned and executed the marketing strategy for a new global skin clinic, curated art galleries and worked as an art dealer internationally, and has consulted on marketing and culture for brands such as MTV, Post Office, Casio and Kit Heath. Emily enjoys photography and has shot with brands such as DeBeers, Lofbergs and Charity Bank. She is training for her WSET and, when not working, enjoys walks with her miniature dachshund, Mayer (a nod to legendary guitarist, John).'
-  },
-  {
-    name: 'Helen Day',
-    text: 'Helen [ssl][dl[s[ds[d]]]] has over a decade of experience in marketing and brand development within agencies, as a consultant and in-house. She has previously planned and executed the marketing strategy for a new global skin clinic, curated art galleries and worked as an art dealer internationally, and has consulted on marketing and culture for brands such as MTV, Post Office, Casio and Kit Heath. Emily enjoys photography and has shot with brands such as DeBeers, Lofbergs and Charity Bank. She is training for her WSET and, when not working, enjoys walks with her miniature dachshund, Mayer (a nod to legendary guitarist, John).'
-  },
+  }
 ];
 
 
 
+let missingMessage = 'Info will be added later'
 
 
 
 
-
-// add overlay to DOM
+// Add overlay to DOM
 
 const overlay = document.createElement('div')
 overlay.classList.add('main-overlay')
@@ -64,7 +52,6 @@ sidebar.innerHTML = `<div class="close-sidebar">
         id quibusdafm.
       </div>`
 
-
 // Scrollbar width
 
 function getScrollbarWidth() {
@@ -88,16 +75,18 @@ function unlockBody() {
 
 
 
-let sideBarWidthDesktop = 600;
+const sideBarWidthDesktop = 600;
+const position = 'right'
+const isPushing = false;
+
 
 
 let sidebarWidth = window.innerWidth <= 640 ? '100%' : sideBarWidthDesktop
 $(sidebar).slideReveal({
   trigger: $('.team__item'),
-  position: 'right',
-  push: false,
+  position: position,
+  push: isPushing,
   overlay: true,
-  position: 'right',
   overlayColor: 'rgba(0,0,0,0)',
   width: sidebarWidth,
 
@@ -120,12 +109,6 @@ $('.close-sidebar').on('click', function () {
 
 
 
-
-
-
-
-let missingMessage = 'No biography at the moment. We are very sorry'
-
 // Data changes
 
 const teamItems = document.querySelectorAll('.team__item');
@@ -144,22 +127,29 @@ teamItems.forEach((item) => {
     const name = item.querySelector('.team__item-name');
     const position = item.querySelector('.team__item-position');
 
-    const nameText = name.textContent.trim(); 
-    const positionText = position.textContent.trim();
+    const nameText = name ? name.textContent.trim() : '';
+    const positionText = position ? position.textContent.trim() : '';
 
     if(sidebarTitle){
       sidebarTitle.textContent = nameText;
     }
 
-    if(sidebarPosition){
+    if (!positionText) {
+      sidebarPosition.style.display = 'none';
+    } else {
+      sidebarPosition.style.display = '';
       sidebarPosition.textContent = positionText;
     }
 
-    const memberData = teamData.find(person => person.name === nameText); 
+    // if(sidebarPosition){
+    //   sidebarPosition.textContent = positionText;
+    // }
+
+    const memberData = teamData.find(member => member.name === nameText); 
     if (memberData) {
       sidebarText.textContent = memberData.text;
     } else {
-      revealText.textContent = missingMessage;
+      sidebarText.textContent = missingMessage;
     }
   });
 });
