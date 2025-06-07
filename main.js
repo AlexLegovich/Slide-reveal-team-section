@@ -20,7 +20,7 @@ const teamData = [
 
 
 
-let missingMessage = 'Info will be added later'
+let missingMessage = 'Информация пока отсутствует, но мы скоро ее добавим'
 
 
 
@@ -75,9 +75,11 @@ function unlockBody() {
 
 
 
-const sideBarWidthDesktop = 600;
+const sideBarWidthDesktop = 600
 const position = 'right'
 const isPushing = false;
+
+
 
 
 
@@ -105,6 +107,16 @@ $(sidebar).slideReveal({
 $('.close-sidebar').on('click', function () {
   $(sidebar).slideReveal('hide')
 })
+
+
+function updateSidebarWidth (){
+const newSidebarWidth = window.innerWidth <= 640 ? '100%' : sideBarWidthDesktop;
+ $(sidebar).css('width', newSidebarWidth);
+console.log(newSidebarWidth);
+
+}
+
+window.addEventListener('resize', updateSidebarWidth);
 
 
 
